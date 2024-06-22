@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException ,  File, UploadFile
 import fastapi as _fastapi
 from fastapi.security import OAuth2PasswordBearer
 from dotenv import load_dotenv
-from jwt.exceptions import DecodeError
+import jwt.exceptions
 from pydantic import BaseModel
 import requests
 import base64

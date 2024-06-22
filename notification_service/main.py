@@ -7,13 +7,13 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-RABBITMQ_URL = os.environ.get("RABBITMQ_URL")
+# RABBITMQ_URL = os.environ.get("RABBITMQ_URL")
     
 
 def main():
     # rabbitmq connection
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host=RABBITMQ_URL))
-    channel = connection.channel()
+    # connection = pika.BlockingConnection(pika.ConnectionParameters(host=RABBITMQ_URL))
+    #  channel = connection.channel()
 
     def callback(ch, method, properties, body):
         try:
@@ -26,13 +26,13 @@ def main():
             print(f"Error processing message: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag)
 
-    channel.basic_consume(
-        queue="email_notification", on_message_callback=callback
-    )
+    # channel.basic_consume(
+    #     queue="email_notification", on_message_callback=callback
+    # )
 
     print("Waiting for messages. To exit press CTRL+C")
 
-    channel.start_consuming()
+    # channel.start_consuming()
 
 
 if __name__ == "__main__":

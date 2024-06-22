@@ -8,6 +8,7 @@ import service as _services
 import logging
 import database as _database
 import pika
+import pymongo
 
 # rabbitmq connection
 connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost"))
